@@ -17,6 +17,16 @@
       >
     {% endif %}
   </div>
+
+  <nav class="coastal-pillar__rooms-nav" aria-label="Shop by room">
+    <a href="{{ routes.collections_url }}/outdoors" class="coastal-pillar__room-link">Outdoors</a>
+    <a href="{{ routes.collections_url }}/primary-bedroom" class="coastal-pillar__room-link">Primary Bedroom</a>
+    <a href="{{ routes.collections_url }}/living-room" class="coastal-pillar__room-link">Living Room</a>
+    <a href="{{ routes.collections_url }}/dining-room" class="coastal-pillar__room-link">Dining Room</a>
+    <a href="{{ routes.collections_url }}/guest-bedroom" class="coastal-pillar__room-link">Guest Bedroom</a>
+    <a href="{{ routes.collections_url }}/office" class="coastal-pillar__room-link">Office</a>
+    <a href="{{ routes.collections_url }}/powder-bathroom" class="coastal-pillar__room-link">Powder Bathroom</a>
+  </nav>
 </div>
 
 {% stylesheet %}
@@ -62,6 +72,31 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .coastal-pillar__rooms-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 1.75rem;
+    padding: 2.5rem var(--page-margin, 16px) 0;
+  }
+
+  .coastal-pillar__room-link {
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease;
+  }
+
+  .coastal-pillar__room-link:hover {
+    border-bottom-color: #000000;
   }
 {% endstylesheet %}
 
