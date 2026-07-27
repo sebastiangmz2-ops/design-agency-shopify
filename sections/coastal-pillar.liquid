@@ -1,7 +1,6 @@
 <div class="coastal-pillar">
   <div class="coastal-pillar__intro page-width-narrow">
-    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal Pillar' }}</h1>
-    <p class="coastal-pillar__subtitle">{{ section.settings.subtitle | default: 'Santa Barbara Beach House' }}</p>
+    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal' }}</h1>
   </div>
 
   <div class="coastal-pillar__header-image">
@@ -10,7 +9,7 @@
     {% else %}
       <img
         src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}"
-        alt="{{ section.settings.title | default: 'Coastal Pillar' }}"
+        alt="{{ section.settings.title | default: 'Coastal' }}"
         loading="eager"
         width="2400"
         height="1600"
@@ -50,15 +49,6 @@
     line-height: 1.05;
     margin: 0 0 0.75rem;
     color: #000000;
-  }
-
-  .coastal-pillar__subtitle {
-    font-family: var(--font-body--family);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #000000;
-    margin: 0;
   }
 
   .coastal-pillar__header-image {
@@ -108,13 +98,7 @@
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Coastal Pillar"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Santa Barbara Beach House"
+      "default": "Coastal"
     },
     {
       "type": "image_picker",
