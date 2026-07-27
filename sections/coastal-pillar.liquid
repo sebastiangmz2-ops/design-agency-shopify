@@ -1,8 +1,4 @@
 <div class="coastal-pillar">
-  <div class="coastal-pillar__intro page-width-narrow">
-    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal' }}</h1>
-  </div>
-
   <div class="coastal-pillar__header-image">
     {% if section.settings.image %}
       {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '750,1100,1500,2000,2400' }}
@@ -15,6 +11,7 @@
         height="1600"
       >
     {% endif %}
+    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal' }}</h1>
   </div>
 
   <nav class="coastal-pillar__rooms-nav" aria-label="Shop by room">
@@ -35,24 +32,25 @@
     padding-block: 4rem;
   }
 
-  .coastal-pillar__intro {
-    margin-inline: auto;
-    text-align: center;
-    padding-inline: var(--page-margin, 16px);
-    margin-bottom: 3rem;
-  }
-
   .coastal-pillar__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: 100%;
+    text-align: center;
     font-family: var(--font-heading--family);
     font-weight: 400;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(3.5rem, 9vw, 8rem);
     line-height: 1.05;
-    margin: 0 0 0.75rem;
-    color: #000000;
+    color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
   }
 
   .coastal-pillar__header-image {
+    position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
