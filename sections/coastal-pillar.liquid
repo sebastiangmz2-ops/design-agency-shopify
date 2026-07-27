@@ -1,7 +1,3 @@
-{% liquid
-  assign rooms = 'outdoors|Outdoors,primary-bedroom|Primary Bedroom,living-room|Living Room,dining-room|Dining Room,guest-bedroom|Guest Bedroom,office|Office,powder-bathroom|Powder Bathroom' | split: ','
-%}
-
 <div class="coastal-pillar">
   <div class="coastal-pillar__intro page-width-narrow">
     <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal Pillar' }}</h1>
@@ -9,35 +5,17 @@
   </div>
 
   <div class="coastal-pillar__header-image">
-    <img
-      src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}"
-      alt="Living Room"
-      loading="eager"
-      width="2400"
-      height="1600"
-    >
-  </div>
-
-  <div class="coastal-pillar__rooms">
-    {% for room in rooms %}
-      {% assign parts = room | split: '|' %}
-      {% assign slug = parts[0] %}
-      {% assign label = parts[1] %}
-      {% unless slug == 'living-room' %}
-        <div class="coastal-pillar__room">
-          <div class="coastal-pillar__room-image">
-            <img
-              src="{{ 'coastal-pillar-' | append: slug | append: '.jpg' | asset_url }}"
-              alt="{{ label }}"
-              loading="lazy"
-              width="2400"
-              height="1600"
-            >
-          </div>
-          <p class="coastal-pillar__room-label">{{ label }}</p>
-        </div>
-      {% endunless %}
-    {% endfor %}
+    {% if section.settings.image %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '750,1100,1500,2000,2400' }}
+    {% else %}
+      <img
+        src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}"
+        alt="{{ section.settings.title | default: 'Coastal Pillar' }}"
+        loading="eager"
+        width="2400"
+        height="1600"
+      >
+    {% endif %}
   </div>
 </div>
 
@@ -73,36 +51,17 @@
     margin: 0;
   }
 
-  .coastal-pillar__header-image,
-  .coastal-pillar__room-image {
+  .coastal-pillar__header-image {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
   }
 
-  .coastal-pillar__header-image img,
-  .coastal-pillar__room-image img {
+  .coastal-pillar__header-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  .coastal-pillar__rooms {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    margin-top: 4rem;
-  }
-
-  .coastal-pillar__room-label {
-    font-family: var(--font-body--family);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-align: center;
-    color: #000000;
-    margin: 1.25rem 0 0;
   }
 {% endstylesheet %}
 
@@ -121,6 +80,11 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Santa Barbara Beach House"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Header image"
     }
   ],
   "presets": [
