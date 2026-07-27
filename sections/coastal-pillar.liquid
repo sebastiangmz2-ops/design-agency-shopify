@@ -1,0 +1,132 @@
+{% liquid
+  assign rooms = 'outdoors|Outdoors,primary-bedroom|Primary Bedroom,living-room|Living Room,dining-room|Dining Room,guest-bedroom|Guest Bedroom,office|Office,powder-bathroom|Powder Bathroom' | split: ','
+%}
+
+<div class="coastal-pillar">
+  <div class="coastal-pillar__intro page-width-narrow">
+    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal Pillar' }}</h1>
+    <p class="coastal-pillar__subtitle">{{ section.settings.subtitle | default: 'Santa Barbara Beach House' }}</p>
+  </div>
+
+  <div class="coastal-pillar__header-image">
+    <img
+      src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}"
+      alt="Living Room"
+      loading="eager"
+      width="2400"
+      height="1600"
+    >
+  </div>
+
+  <div class="coastal-pillar__rooms">
+    {% for room in rooms %}
+      {% assign parts = room | split: '|' %}
+      {% assign slug = parts[0] %}
+      {% assign label = parts[1] %}
+      {% unless slug == 'living-room' %}
+        <div class="coastal-pillar__room">
+          <div class="coastal-pillar__room-image">
+            <img
+              src="{{ 'coastal-pillar-' | append: slug | append: '.jpg' | asset_url }}"
+              alt="{{ label }}"
+              loading="lazy"
+              width="2400"
+              height="1600"
+            >
+          </div>
+          <p class="coastal-pillar__room-label">{{ label }}</p>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .coastal-pillar {
+    background: #ffffff;
+    color: #000000;
+    padding-block: 4rem;
+  }
+
+  .coastal-pillar__intro {
+    margin-inline: auto;
+    text-align: center;
+    padding-inline: var(--page-margin, 16px);
+    margin-bottom: 3rem;
+  }
+
+  .coastal-pillar__title {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    margin: 0 0 0.75rem;
+    color: #000000;
+  }
+
+  .coastal-pillar__subtitle {
+    font-family: var(--font-body--family);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+  }
+
+  .coastal-pillar__header-image,
+  .coastal-pillar__room-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  .coastal-pillar__header-image img,
+  .coastal-pillar__room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .coastal-pillar__rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 4rem;
+  }
+
+  .coastal-pillar__room-label {
+    font-family: var(--font-body--family);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000000;
+    margin: 1.25rem 0 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Coastal Pillar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Coastal Pillar"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Santa Barbara Beach House"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coastal Pillar"
+    }
+  ]
+}
+{% endschema %}

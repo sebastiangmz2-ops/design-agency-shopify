@@ -8,6 +8,13 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "coastal_pillar_mock": {
+      "type": "coastal-pillar",
+      "settings": {
+        "title": "Coastal Pillar",
+        "subtitle": "Santa Barbara Beach House"
+      }
+    },
     "hero_iyt6zg": {
       "type": "hero",
       "blocks": {
@@ -748,6 +755,7 @@
     }
   },
   "order": [
+    "coastal_pillar_mock",
     "hero_iyt6zg",
     "collection_links_Ut4aMz",
     "featured_product_mTUbKC",
