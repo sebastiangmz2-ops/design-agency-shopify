@@ -55,14 +55,21 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {% if settings.logo == blank %}
+      <span class="header-logo__text-lockup">
+        <span class="header-logo__wordmark">The Design Agency</span>
+        <span class="header-logo__kicker">The Collection</span>
+      </span>
+    {% else %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        alt_text_fallback: alt_text_fallback,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}
@@ -118,6 +125,32 @@
     &:hover {
       text-decoration: none;
     }
+  }
+
+  .header-logo__text-lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15em;
+    line-height: 1;
+  }
+
+  .header-logo__wordmark {
+    font-family: "optima-lt-pro", var(--font-heading--family);
+    font-size: 1.05em;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .header-logo__kicker {
+    font-family: var(--font-heading--family);
+    font-size: 0.55em;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .header-logo__image {
