@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "main": {
+      "type": "pillar-header",
+      "blocks": {
+        "room_1": {
+          "type": "room_link",
+          "settings": {
+            "label": "Primary Bedroom",
+            "link": "shopify://collections/modern-farm-primary-bedroom"
+          }
+        },
+        "room_2": {
+          "type": "room_link",
+          "settings": {
+            "label": "Living Room",
+            "link": "shopify://collections/modern-farm-living-room"
+          }
+        },
+        "room_3": {
+          "type": "room_link",
+          "settings": {
+            "label": "Dining Room",
+            "link": "shopify://collections/modern-farm-dining-room"
+          }
+        },
+        "room_4": {
+          "type": "room_link",
+          "settings": {
+            "label": "Guest Bedroom",
+            "link": "shopify://collections/modern-farm-guest-bedroom"
+          }
+        },
+        "room_5": {
+          "type": "room_link",
+          "settings": {
+            "label": "Office",
+            "link": "shopify://collections/modern-farm-office"
+          }
+        },
+        "room_6": {
+          "type": "room_link",
+          "settings": {
+            "label": "Powder Bathroom",
+            "link": "shopify://collections/modern-farm-powder-bathroom"
+          }
+        },
+        "room_7": {
+          "type": "room_link",
+          "settings": {
+            "label": "Outdoors",
+            "link": "shopify://collections/modern-farm-outdoors"
+          }
+        }
+      },
+      "block_order": [
+        "room_1",
+        "room_2",
+        "room_3",
+        "room_4",
+        "room_5",
+        "room_6",
+        "room_7"
+      ],
+      "settings": {
+        "title": "Modern Farm",
+        "fallback_image_filename": "pillar-modern-farm.jpg"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,21 +1,21 @@
 <div class="pillar-grid" id="pillar-grid">
-  <a href="#coastal" class="pillar-grid__tile">
+  <a href="{{ pages['coastal'].url | default: '/pages/coastal' }}" class="pillar-grid__tile">
     <img src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}" alt="Coastal" loading="lazy" width="1200" height="800">
     <span class="pillar-grid__label">Coastal</span>
   </a>
-  <a href="#modern-farm" class="pillar-grid__tile">
+  <a href="{{ pages['modern-farm'].url | default: '/pages/modern-farm' }}" class="pillar-grid__tile">
     <img src="{{ 'pillar-modern-farm.jpg' | asset_url }}" alt="Modern Farm" loading="lazy" width="1200" height="800">
     <span class="pillar-grid__label">Modern Farm</span>
   </a>
-  <a href="#minimal" class="pillar-grid__tile">
+  <a href="{{ pages['minimal'].url | default: '/pages/minimal' }}" class="pillar-grid__tile">
     <img src="{{ 'pillar-minimal.jpg' | asset_url }}" alt="Minimal" loading="lazy" width="1200" height="800">
     <span class="pillar-grid__label">Minimal</span>
   </a>
-  <a href="#heritage" class="pillar-grid__tile">
+  <a href="{{ pages['heritage'].url | default: '/pages/heritage' }}" class="pillar-grid__tile">
     <img src="{{ 'pillar-heritage.jpg' | asset_url }}" alt="Heritage" loading="lazy" width="1200" height="800">
     <span class="pillar-grid__label">Heritage</span>
   </a>
-  <a href="#sanctuary" class="pillar-grid__tile">
+  <a href="{{ pages['sanctuary'].url | default: '/pages/sanctuary' }}" class="pillar-grid__tile">
     <img src="{{ 'pillar-sanctuary.jpg' | asset_url }}" alt="Sanctuary" loading="lazy" width="1200" height="800">
     <span class="pillar-grid__label">Sanctuary</span>
   </a>

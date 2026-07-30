@@ -8,18 +8,15 @@
  * ------------------------------------------------------------
  */{
   "sections": {
-    "pillar_intro_mock": {
-      "type": "pillar-intro",
+    "main": {
+      "type": "pillar-header",
       "settings": {
-        "fallback_image_filename": "pillar-intro.jpg"
+        "title": "Sanctuary",
+        "fallback_image_filename": "pillar-sanctuary.jpg"
       }
-    },
-    "pillar_grid_mock": {
-      "type": "pillar-grid"
     }
   },
   "order": [
-    "pillar_intro_mock",
-    "pillar_grid_mock"
+    "main"
   ]
 }
