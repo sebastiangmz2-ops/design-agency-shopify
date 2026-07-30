@@ -1,0 +1,136 @@
+<div class="newsletter-divider">
+  <div class="newsletter-divider__rule"></div>
+
+  <div class="newsletter-divider__inner">
+    <h2 class="newsletter-divider__heading">Sign up for our newsletter</h2>
+
+    {%- form 'customer', class: 'newsletter-divider__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="newsletter-divider__input-group">
+        <label for="NewsletterDivider-email" class="visually-hidden">Email</label>
+        <input
+          id="NewsletterDivider-email"
+          class="newsletter-divider__input"
+          type="email"
+          name="contact[email]"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          placeholder="Email address"
+          required
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="NewsletterDivider-error"
+          {% elsif form.posted_successfully? %}
+            aria-describedby="NewsletterDivider-success"
+          {% endif %}
+        >
+        <button class="newsletter-divider__button" aria-label="Sign up">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" width="18" height="18">
+            <path d="M2 10h15M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      {% if form.errors %}
+        <div id="NewsletterDivider-error" class="newsletter-divider__message" tabindex="-1">
+          {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+        </div>
+      {% endif %}
+
+      {% if form.posted_successfully? %}
+        <div id="NewsletterDivider-success" class="newsletter-divider__message" tabindex="-1">
+          Thanks for signing up!
+        </div>
+      {% endif %}
+    {%- endform -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .newsletter-divider {
+    background: #ffffff;
+    padding: 3rem var(--page-margin, 16px) 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newsletter-divider__rule {
+    width: 100%;
+    max-width: var(--page-content-width, 1400px);
+    border-top: 1px solid #000000;
+    margin-bottom: 2.5rem;
+  }
+
+  .newsletter-divider__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .newsletter-divider__heading {
+    font-family: var(--font-body--family);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .newsletter-divider__form {
+    width: 100%;
+  }
+
+  .newsletter-divider__input-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 auto;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 0.5rem;
+  }
+
+  .newsletter-divider__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: var(--font-body--family);
+    font-size: 0.95rem;
+    text-align: center;
+    color: #000000;
+    outline: none;
+  }
+
+  .newsletter-divider__input::placeholder {
+    color: #666666;
+  }
+
+  .newsletter-divider__button {
+    border: none;
+    background: none;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .newsletter-divider__message {
+    font-family: var(--font-body--family);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Newsletter divider",
+  "presets": [
+    { "name": "Newsletter divider" }
+  ]
+}
+{% endschema %}

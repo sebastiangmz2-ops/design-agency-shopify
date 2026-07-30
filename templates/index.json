@@ -16,10 +16,14 @@
     },
     "pillar_grid_mock": {
       "type": "pillar-grid"
+    },
+    "pillar_explore_cta": {
+      "type": "pillar-explore-cta"
     }
   },
   "order": [
     "pillar_intro_mock",
+    "pillar_explore_cta",
     "pillar_grid_mock"
   ]
 }
