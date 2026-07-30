@@ -1,38 +1,38 @@
-<div class="coastal-pillar">
-  <div class="coastal-pillar__header-image">
+<div class="pillar-header">
+  <div class="pillar-header__image">
     {% if section.settings.image %}
       {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '750,1100,1500,2000,2400' }}
-    {% else %}
+    {% elsif section.settings.fallback_image_filename != blank %}
       <img
-        src="{{ 'coastal-pillar-living-room.jpg' | asset_url }}"
-        alt="{{ section.settings.title | default: 'Coastal' }}"
+        src="{{ section.settings.fallback_image_filename | asset_url }}"
+        alt="{{ section.settings.title }}"
         loading="eager"
         width="2400"
         height="1600"
       >
     {% endif %}
-    <h1 class="coastal-pillar__title">{{ section.settings.title | default: 'Coastal' }}</h1>
+    <h1 class="pillar-header__title">{{ section.settings.title }}</h1>
   </div>
 
-  <nav class="coastal-pillar__rooms-nav" aria-label="Shop by room">
-    <a href="{{ routes.collections_url }}/primary-bedroom" class="coastal-pillar__room-link">Primary Bedroom</a>
-    <a href="{{ routes.collections_url }}/living-room" class="coastal-pillar__room-link">Living Room</a>
-    <a href="{{ routes.collections_url }}/dining-room" class="coastal-pillar__room-link">Dining Room</a>
-    <a href="{{ routes.collections_url }}/guest-bedroom" class="coastal-pillar__room-link">Guest Bedroom</a>
-    <a href="{{ routes.collections_url }}/office" class="coastal-pillar__room-link">Office</a>
-    <a href="{{ routes.collections_url }}/powder-bathroom" class="coastal-pillar__room-link">Powder Bathroom</a>
-    <a href="{{ routes.collections_url }}/outdoors" class="coastal-pillar__room-link">Outdoors</a>
-  </nav>
+  {% if section.blocks.size > 0 %}
+    <nav class="pillar-header__rooms-nav" aria-label="Shop by room">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="pillar-header__room-link" {{ block.shopify_attributes }}>
+          {{ block.settings.label }}
+        </a>
+      {% endfor %}
+    </nav>
+  {% endif %}
 </div>
 
 {% stylesheet %}
-  .coastal-pillar {
+  .pillar-header {
     background: #ffffff;
     color: #000000;
     padding-block: 4rem;
   }
 
-  .coastal-pillar__title {
+  .pillar-header__title {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -49,21 +49,22 @@
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.65);
   }
 
-  .coastal-pillar__header-image {
+  .pillar-header__image {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
+    background: #f2f2f2;
   }
 
-  .coastal-pillar__header-image img {
+  .pillar-header__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .coastal-pillar__rooms-nav {
+  .pillar-header__rooms-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -72,7 +73,7 @@
     padding: 2.5rem var(--page-margin, 16px) 0;
   }
 
-  .coastal-pillar__room-link {
+  .pillar-header__room-link {
     font-family: var(--font-body--family);
     font-size: 0.75rem;
     letter-spacing: 0.12em;
@@ -84,30 +85,55 @@
     transition: border-color 0.15s ease;
   }
 
-  .coastal-pillar__room-link:hover {
+  .pillar-header__room-link:hover {
     border-bottom-color: #000000;
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "Coastal Pillar",
+  "name": "Pillar header",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Coastal"
+      "default": "Pillar"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Header image"
+    },
+    {
+      "type": "text",
+      "id": "fallback_image_filename",
+      "label": "Fallback theme asset filename",
+      "info": "Used until a Header image is picked above, e.g. pillar-coastal.jpg"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "room_link",
+      "name": "Room link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Room name",
+          "default": "Room"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Coastal Pillar"
+      "name": "Pillar header"
     }
   ]
 }
