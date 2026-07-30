@@ -9,7 +9,10 @@
  */{
   "sections": {
     "pillar_intro_mock": {
-      "type": "pillar-intro"
+      "type": "pillar-intro",
+      "settings": {
+        "fallback_image_filename": "pillar-intro.jpg"
+      }
     },
     "pillar_grid_mock": {
       "type": "pillar-grid"
