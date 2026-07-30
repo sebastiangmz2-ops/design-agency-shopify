@@ -1,0 +1,146 @@
+<div class="bio bio--image-{{ section.settings.image_position }}">
+  <div class="bio__image">
+    {% if section.settings.image %}
+      {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '400,600,900,1200,1600' }}
+    {% elsif section.settings.fallback_image_filename != blank %}
+      <img
+        src="{{ section.settings.fallback_image_filename | asset_url }}"
+        alt="{{ section.settings.name }}"
+        loading="lazy"
+        width="1200"
+        height="1200"
+      >
+    {% endif %}
+  </div>
+
+  <div class="bio__content">
+    <h2 class="bio__name">{{ section.settings.name }}</h2>
+    <p class="bio__title">{{ section.settings.title }}</p>
+    <div class="bio__body">{{ section.settings.body }}</div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .bio {
+    display: flex;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    background: #ffffff;
+    padding: 5rem var(--page-margin, 16px);
+    max-width: var(--page-content-width, 1400px);
+    margin: 0 auto;
+  }
+
+  .bio--image-right {
+    flex-direction: row-reverse;
+  }
+
+  @media screen and (max-width: 749px) {
+    .bio {
+      flex-direction: column;
+      padding: 3rem var(--page-margin, 16px);
+      gap: 2rem;
+    }
+  }
+
+  .bio__image {
+    flex: 0 0 40%;
+    max-width: 26rem;
+  }
+
+  .bio__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .bio__content {
+    flex: 1;
+  }
+
+  .bio__name {
+    font-family: "optima-lt-pro", var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 0.5rem;
+  }
+
+  .bio__title {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 1.75rem;
+  }
+
+  .bio__body {
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #000000;
+    max-width: 38rem;
+  }
+
+  .bio__body p {
+    margin: 0 0 1.25rem;
+  }
+
+  .bio__body p:last-child {
+    margin-bottom: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Bio",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "fallback_image_filename",
+      "label": "Fallback theme asset filename"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Melisa Bilicki"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Principal Interior Designer"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Bio"
+    }
+  ],
+  "presets": [
+    { "name": "Bio" }
+  ]
+}
+{% endschema %}
