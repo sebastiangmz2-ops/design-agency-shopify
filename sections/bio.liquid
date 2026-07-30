@@ -16,6 +16,7 @@
   <div class="bio__content">
     <h2 class="bio__name">{{ section.settings.name }}</h2>
     <p class="bio__title">{{ section.settings.title }}</p>
+    <div class="bio__rule"></div>
     <div class="bio__body">{{ section.settings.body }}</div>
   </div>
 </div>
@@ -23,7 +24,7 @@
 {% stylesheet %}
   .bio {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: clamp(2rem, 6vw, 6rem);
     background: #ffffff;
     padding: 5rem var(--page-margin, 16px);
@@ -71,19 +72,26 @@
   }
 
   .bio__title {
-    font-family: var(--font-heading--family);
+    font-family: var(--font-body--family);
     font-weight: 400;
-    font-size: 1.15rem;
-    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #000000;
-    margin: 0 0 1.75rem;
+    margin: 0;
+  }
+
+  .bio__rule {
+    width: 100%;
+    max-width: 20rem;
+    border-top: 1px solid #000000;
+    margin: 1.5rem 0 1.75rem;
   }
 
   .bio__body {
     font-family: var(--font-body--family);
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.65;
     color: #000000;
     max-width: 38rem;
   }
