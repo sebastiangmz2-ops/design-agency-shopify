@@ -1,4 +1,4 @@
-<div class="pillar-header">
+<div class="pillar-header" id="{{ section.settings.title | handleize }}">
   <div class="pillar-header__image">
     {% if section.settings.image %}
       {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '750,1100,1500,2000,2400' }}

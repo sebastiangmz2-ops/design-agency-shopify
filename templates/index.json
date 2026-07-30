@@ -8,6 +8,12 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "pillar_intro_mock": {
+      "type": "pillar-intro"
+    },
+    "pillar_grid_mock": {
+      "type": "pillar-grid"
+    },
     "coastal_pillar_mock": {
       "type": "pillar-header",
       "blocks": {
@@ -823,6 +829,8 @@
     }
   },
   "order": [
+    "pillar_intro_mock",
+    "pillar_grid_mock",
     "coastal_pillar_mock",
     "modern_farm_header",
     "minimal_header",

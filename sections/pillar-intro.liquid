@@ -1,0 +1,70 @@
+<div class="pillar-intro">
+  <p class="pillar-intro__eyebrow">The Design Agency Presents</p>
+  <h1 class="pillar-intro__headline">A Curated World</h1>
+  <p class="pillar-intro__body">
+    Five distinct points of view on home, curated by Melissa Bilicki,
+    Principal Designer of The Design Agency.
+  </p>
+  <a href="#pillar-grid" class="pillar-intro__cta">Explore the Collections ↓</a>
+</div>
+
+{% stylesheet %}
+  .pillar-intro {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 4rem var(--page-margin, 16px);
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .pillar-intro__eyebrow {
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .pillar-intro__headline {
+    font-family: "optima-lt-pro", var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .pillar-intro__body {
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.5;
+    max-width: 32rem;
+    margin: 0;
+  }
+
+  .pillar-intro__cta {
+    margin-top: 1rem;
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pillar intro",
+  "presets": [
+    { "name": "Pillar intro" }
+  ]
+}
+{% endschema %}
