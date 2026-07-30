@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
@@ -62,8 +61,7 @@
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
                 "gap": 12,
-                "width": "custom",
-                "custom_width": 50,
+                "width": "fit-content",
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -86,50 +84,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "menu_zf63TX": {
-                  "type": "menu",
-                  "name": "t:names.menu",
-                  "settings": {
-                    "menu": "footer",
-                    "heading": "Shop",
-                    "menu_spacing": 12,
-                    "show_as_accordion": false,
-                    "accordion_icon": "caret",
-                    "accordion_dividers": false,
-                    "heading_preset": "h4",
-                    "link_preset": "h5",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "menu_H4cHLN": {
                   "type": "menu",
                   "name": "t:names.menu",
                   "settings": {
-                    "menu": "",
+                    "menu": "footer",
                     "heading": "About us",
-                    "menu_spacing": 12,
-                    "show_as_accordion": false,
-                    "accordion_icon": "caret",
-                    "accordion_dividers": false,
-                    "heading_preset": "h4",
-                    "link_preset": "h5",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "menu_HFzgCj": {
-                  "type": "menu",
-                  "name": "t:names.menu",
-                  "settings": {
-                    "menu": "",
-                    "heading": "Connect",
                     "menu_spacing": 12,
                     "show_as_accordion": false,
                     "accordion_icon": "caret",
@@ -145,9 +105,7 @@
                 }
               },
               "block_order": [
-                "menu_zf63TX",
-                "menu_H4cHLN",
-                "menu_HFzgCj"
+                "menu_H4cHLN"
               ]
             },
             "group_gz8NPq": {
@@ -257,29 +215,9 @@
       "settings": {
         "section_width": "page-width",
         "gap": 0,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#F8F4EC",
         "padding-block-start": 64,
         "padding-block-end": 0
-      }
-    },
-    "logo_RVGHD7": {
-      "type": "logo",
-      "name": "t:names.logo",
-      "settings": {
-        "inverse": false,
-        "font": "heading",
-        "unit": "percent",
-        "pixel_height": 48,
-        "percent_width": 100,
-        "custom_mobile_size": false,
-        "unit_mobile": "percent",
-        "percent_width_mobile": 100,
-        "pixel_height_mobile": 120,
-        "section_width": "page-width",
-        "alignment_horizontal": "center",
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 72,
-        "padding-block-end": 48
       }
     },
     "utilities": {
@@ -326,7 +264,7 @@
         "gap": 24,
         "divider_thickness": 1,
         "divider_color": "{{ settings.color_palette.color2 }}",
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#F8F4EC",
         "padding-block-start": 12,
         "padding-block-end": 16
       }
@@ -334,7 +272,6 @@
   },
   "order": [
     "footer",
-    "logo_RVGHD7",
     "utilities"
   ]
 }
