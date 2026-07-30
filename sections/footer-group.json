@@ -189,13 +189,9 @@
         "padding-block-start": 12,
         "padding-block-end": 16
       }
-    },
-    "newsletter_divider_section": {
-      "type": "newsletter-divider"
     }
   },
   "order": [
-    "newsletter_divider_section",
     "footer",
     "utilities"
   ]

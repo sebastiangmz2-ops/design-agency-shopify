@@ -29,12 +29,16 @@
         "title": "Principal Interior Designer",
         "body": "<p>With over 22 years of experience, Melissa Bilicki leads The Design Agency with a refined eye, a collaborative spirit, and a passion for creating spaces that tell meaningful stories. As Principal Designer, she brings an intuitive understanding of how to translate a client\u2019s vision into environments that are not only beautiful, but deeply personal and impactful.</p><p>Melissa believes that great design begins with active listening. She works closely with clients to uncover their unique goals and aspirations, communicates a clear vision for what\u2019s possible, and inspires those around her to explore bold, creative ideas. Her ultimate goal is not to leave her mark\u2014but to help others realize a space that is a true reflection of themselves, their brand, or their lifestyle.</p><p>Her expertise spans merchandising and styling across retail, staging, production, commercial, and residential projects. By engaging all five senses in her design approach, Melissa ensures each space leaves a lasting impression\u2014one that\u2019s both memorable and meaningful.</p>"
       }
+    },
+    "newsletter_divider_section": {
+      "type": "newsletter-divider"
     }
   },
   "order": [
     "pillar_intro_mock",
     "pillar_explore_cta",
     "pillar_grid_mock",
-    "bio_melissa"
+    "bio_melissa",
+    "newsletter_divider_section"
   ]
 }
