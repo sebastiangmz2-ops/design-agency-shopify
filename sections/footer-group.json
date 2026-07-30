@@ -107,9 +107,35 @@
               "block_order": [
                 "menu_H4cHLN"
               ]
+            },
+            "text_design_agency": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>The Design Agency</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "optima-lt-pro, var(--font-heading--family)",
+                "line_height": "normal",
+                "letter_spacing": "loose",
+                "case": "uppercase",
+                "wrap": "nowrap",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "font_size": "1.1rem"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
+            "text_design_agency",
             "group_MTNPDR"
           ]
         }
