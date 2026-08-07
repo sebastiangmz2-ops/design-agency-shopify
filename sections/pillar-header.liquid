@@ -15,7 +15,9 @@
         height="1600"
       >
     {% endif %}
-    <h1 class="pillar-header__title">{{ display_title }}</h1>
+    {% unless section.settings.hide_title %}
+      <h1 class="pillar-header__title">{{ display_title }}</h1>
+    {% endunless %}
   </div>
 
   {% if section.blocks.size > 0 %}
@@ -114,6 +116,12 @@
       "id": "fallback_image_filename",
       "label": "Fallback theme asset filename",
       "info": "Used until a Header image is picked above, e.g. pillar-coastal.jpg"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_title",
+      "label": "Hide title overlay on image",
+      "default": false
     }
   ],
   "blocks": [

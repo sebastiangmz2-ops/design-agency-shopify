@@ -1,22 +1,44 @@
 {% liquid
-  assign display_title = section.settings.title | remove: 'Modern Farm ' | remove: 'Coastal ' | remove: 'Minimal ' | remove: 'Heritage '
+  assign room_name = section.settings.title | remove: 'Modern Farm ' | remove: 'Coastal ' | remove: 'Minimal ' | remove: 'Heritage '
 %}
 
 <div class="collection-room-subheading">
-  <h2>{{ display_title }}</h2>
+  <h1 class="collection-room-subheading__pillar">{{ section.settings.pillar_name }}</h1>
+  <div class="collection-room-subheading__rule"></div>
+  <h2 class="collection-room-subheading__room">{{ room_name }}</h2>
 </div>
 
 {% stylesheet %}
   .collection-room-subheading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 2.5rem var(--page-margin, 16px) 0.5rem;
+    padding: 3rem var(--page-margin, 16px) 2rem;
     background: #ffffff;
   }
 
-  .collection-room-subheading h2 {
+  .collection-room-subheading__pillar {
     font-family: var(--font-heading--family);
     font-weight: 400;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: #000000;
+  }
+
+  .collection-room-subheading__rule {
+    width: 100%;
+    max-width: var(--page-content-width, 1400px);
+    border-top: 1px solid #000000;
+    margin: 1.25rem 0;
+  }
+
+  .collection-room-subheading__room {
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 0;
@@ -30,8 +52,14 @@
   "settings": [
     {
       "type": "text",
+      "id": "pillar_name",
+      "label": "Pillar name",
+      "default": "Pillar"
+    },
+    {
+      "type": "text",
       "id": "title",
-      "label": "Title"
+      "label": "Collection title (for room name)"
     }
   ],
   "presets": [
