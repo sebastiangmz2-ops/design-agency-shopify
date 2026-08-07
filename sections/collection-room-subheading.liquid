@@ -1,11 +1,6 @@
-{% liquid
-  assign room_name = section.settings.title | remove: 'Modern Farm ' | remove: 'Coastal ' | remove: 'Minimal ' | remove: 'Heritage '
-%}
-
 <div class="collection-room-subheading">
   <h1 class="collection-room-subheading__pillar">{{ section.settings.pillar_name }}</h1>
   <div class="collection-room-subheading__rule"></div>
-  <h2 class="collection-room-subheading__room">{{ room_name }}</h2>
 
   {% if section.blocks.size > 0 %}
     <nav class="collection-room-subheading__rooms-nav" aria-label="Shop by room">
@@ -56,23 +51,14 @@
     margin: 1.25rem 0;
   }
 
-  .collection-room-subheading__room {
-    font-family: var(--font-heading--family);
-    font-weight: 400;
-    font-size: clamp(1.15rem, 2vw, 1.5rem);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin: 0;
-    color: #000000;
-  }
-
   .collection-room-subheading__rooms-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.6rem 1.75rem;
+    gap: 0.75rem 1.75rem;
     margin-top: 1.75rem;
+    max-width: var(--page-content-width, 1400px);
   }
 
   .collection-room-subheading__room-link {
@@ -96,6 +82,7 @@
 
   .collection-room-subheading__room-link--current {
     color: #000000;
+    font-weight: 600;
     border-bottom-color: #000000;
     pointer-events: none;
   }
