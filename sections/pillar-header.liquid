@@ -1,3 +1,7 @@
+{% liquid
+  assign display_title = section.settings.title | remove: 'Modern Farm ' | remove: 'Coastal ' | remove: 'Minimal ' | remove: 'Heritage '
+%}
+
 <div class="pillar-header" id="{{ section.settings.title | handleize }}">
   <div class="pillar-header__image">
     {% if section.settings.image %}
@@ -11,7 +15,7 @@
         height="1600"
       >
     {% endif %}
-    <h1 class="pillar-header__title">{{ section.settings.title }}</h1>
+    <h1 class="pillar-header__title">{{ display_title }}</h1>
   </div>
 
   {% if section.blocks.size > 0 %}
