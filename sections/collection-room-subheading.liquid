@@ -6,6 +6,27 @@
   <h1 class="collection-room-subheading__pillar">{{ section.settings.pillar_name }}</h1>
   <div class="collection-room-subheading__rule"></div>
   <h2 class="collection-room-subheading__room">{{ room_name }}</h2>
+
+  {% if section.blocks.size > 0 %}
+    <nav class="collection-room-subheading__rooms-nav" aria-label="Shop by room">
+      {% for block in section.blocks %}
+        {% liquid
+          assign is_current = false
+          if block.settings.link == request.path
+            assign is_current = true
+          endif
+        %}
+        <a
+          href="{{ block.settings.link }}"
+          class="collection-room-subheading__room-link{% if is_current %} collection-room-subheading__room-link--current{% endif %}"
+          {% if is_current %}aria-current="page"{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.label }}
+        </a>
+      {% endfor %}
+    </nav>
+  {% endif %}
 </div>
 
 {% stylesheet %}
@@ -44,6 +65,40 @@
     margin: 0;
     color: #000000;
   }
+
+  .collection-room-subheading__rooms-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem 1.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .collection-room-subheading__room-link {
+    font-family: var(--font-body--family);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: color 0.25s ease, border-color 0.25s ease, text-shadow 0.25s ease;
+  }
+
+  .collection-room-subheading__room-link:hover,
+  .collection-room-subheading__room-link:focus-visible {
+    color: #000000;
+    border-bottom-color: #000000;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  }
+
+  .collection-room-subheading__room-link--current {
+    color: #000000;
+    border-bottom-color: #000000;
+    pointer-events: none;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -60,6 +115,25 @@
       "type": "text",
       "id": "title",
       "label": "Collection title (for room name)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "room_link",
+      "name": "Room link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Room name",
+          "default": "Room"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
     }
   ],
   "presets": [
