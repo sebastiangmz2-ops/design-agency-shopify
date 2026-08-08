@@ -8,6 +8,9 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "breadcrumb": {
+      "type": "product-breadcrumb"
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -689,6 +692,7 @@
     }
   },
   "order": [
+    "breadcrumb",
     "main",
     "product_recommendations_qnzPkn"
   ]

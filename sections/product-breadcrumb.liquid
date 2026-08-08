@@ -1,0 +1,80 @@
+{% liquid
+  assign pillar_names = 'Modern Farm,Coastal,Minimal,Heritage' | split: ','
+  assign pillar_name = blank
+  assign room_collection = blank
+
+  for collection in product.collections
+    if collection.title contains 'Modern Farm'
+      assign pillar_name = 'Modern Farm'
+    elsif collection.title contains 'Coastal'
+      assign pillar_name = 'Coastal'
+    elsif collection.title contains 'Minimal'
+      assign pillar_name = 'Minimal'
+    elsif collection.title contains 'Heritage'
+      assign pillar_name = 'Heritage'
+    endif
+
+    if pillar_name != blank
+      assign room_collection = collection
+      break
+    endif
+  endfor
+
+  if pillar_name != blank
+    assign pillar_url = pillar_name | handleize | prepend: '/pages/'
+    assign room_name = room_collection.title | remove: pillar_name | strip
+  endif
+%}
+
+{% if pillar_name != blank %}
+  <nav class="product-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ pillar_url }}" class="product-breadcrumb__link">{{ pillar_name | upcase }}</a>
+    <span class="product-breadcrumb__separator">/</span>
+    <a href="{{ room_collection.url }}" class="product-breadcrumb__link">{{ room_name | upcase }}</a>
+  </nav>
+{% endif %}
+
+{% stylesheet %}
+  .product-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem var(--page-margin, 16px) 0;
+    max-width: var(--page-content-width, 1400px);
+    margin: 0 auto;
+  }
+
+  .product-breadcrumb__link {
+    font-family: var(--font-body--family);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease, text-shadow 0.25s ease;
+  }
+
+  .product-breadcrumb__link:hover,
+  .product-breadcrumb__link:focus-visible {
+    color: #000000;
+    border-bottom-color: #000000;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  }
+
+  .product-breadcrumb__separator {
+    font-size: 0.72rem;
+    color: rgba(0, 0, 0, 0.3);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product breadcrumb",
+  "settings": [],
+  "presets": [
+    { "name": "Product breadcrumb" }
+  ]
+}
+{% endschema %}
