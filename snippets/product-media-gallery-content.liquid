@@ -152,7 +152,11 @@
     assign product_media_container_class = product_media_container_class | append: ' constrain-height'
   endif
   if block_settings.aspect_ratio != 'adapt'
-    assign product_media_container_class = product_media_container_class | append: ' media-fit-cover'
+    if block_settings.media_fit == 'contain'
+      assign product_media_container_class = product_media_container_class | append: ' media-fit-contain'
+    else
+      assign product_media_container_class = product_media_container_class | append: ' media-fit-cover'
+    endif
   elsif block_settings.constrain_to_viewport
     assign product_media_container_class = product_media_container_class | append: ' media-fit-' | append: block_settings.media_fit
   else
@@ -243,43 +247,39 @@
     }
   {% endunless %}
 
-  {% if block_settings.aspect_ratio == 'adapt' and block_settings.constrain_to_viewport %}
-    .media-fit-{{ block_settings.media_fit }} {
-      --product-media-fit: {{ block_settings.media_fit }};
-    }
+  .media-fit-contain {
+    --product-media-fit: contain;
+  }
 
-    /* Media fit for all media elements */
-    .media-fit-{{ block_settings.media_fit }} :is(img, video, iframe, .deferred-media__poster-image) {
-      object-fit: {{ block_settings.media_fit }};
-      width: 100%;
-      height: 100%;
-    }
+  /* Media fit for all media elements */
+  .media-fit-contain :is(img, video, iframe, .deferred-media__poster-image) {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
 
-    /* 3D Models (no object-fit support, just sizing) */
-    .media-fit-{{ block_settings.media_fit }} model-viewer {
-      width: 100%;
-      height: 100%;
-    }
-  {% endif %}
+  /* 3D Models (no object-fit support, just sizing) */
+  .media-fit-contain model-viewer {
+    width: 100%;
+    height: 100%;
+  }
 
-  {% unless block_settings.aspect_ratio == 'adapt' and block_settings.constrain_to_viewport %}
-    .media-fit-cover {
-      --product-media-fit: cover;
-    }
+  .media-fit-cover {
+    --product-media-fit: cover;
+  }
 
-    /* Media fit for all media elements - default to cover */
-    .media-fit-cover :is(img, video, iframe, .deferred-media__poster-image) {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
+  /* Media fit for all media elements - default to cover */
+  .media-fit-cover :is(img, video, iframe, .deferred-media__poster-image) {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 
-    /* 3D Models (no object-fit support, just sizing) */
-    .media-fit-cover model-viewer {
-      width: 100%;
-      height: 100%;
-    }
-  {% endunless %}
+  /* 3D Models (no object-fit support, just sizing) */
+  .media-fit-cover model-viewer {
+    width: 100%;
+    height: 100%;
+  }
 
   /* Add background color so carousel arrows' mix-blend-mode works correctly even on transparent areas. */
   {% if block_settings.media_fit == 'contain' %}
@@ -313,7 +313,7 @@
   {% endcapture %}
   {% if block_settings.aspect_ratio == 'adapt' and block_settings.constrain_to_viewport == false %}
     {{ view_transition_styles_contain }}
-  {% elsif block_settings.aspect_ratio == 'adapt' and block_settings.constrain_to_viewport == true and block_settings.media_fit == 'contain' %}
+  {% elsif block_settings.media_fit == 'contain' %}
     {{ view_transition_styles_contain }}
   {% else %}
     {{ view_transition_styles_cover }}
