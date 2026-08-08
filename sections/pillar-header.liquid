@@ -16,6 +16,7 @@
       >
     {% endif %}
     {% unless section.settings.hide_title %}
+      <a href="{{ routes.root_url }}" class="pillar-header__back-link">&larr; All Home Styles</a>
       <h1 class="pillar-header__title">{{ display_title }}</h1>
     {% endunless %}
   </div>
@@ -36,6 +37,29 @@
     background: #ffffff;
     color: #000000;
     padding-block: 4rem;
+  }
+
+  .pillar-header__back-link {
+    position: absolute;
+    top: 1.75rem;
+    left: var(--page-margin, 16px);
+    z-index: 1;
+    font-family: var(--font-body--family);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .pillar-header__back-link:hover,
+  .pillar-header__back-link:focus-visible {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
   }
 
   .pillar-header__title {
