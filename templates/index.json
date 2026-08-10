@@ -11,7 +11,7 @@
     "pillar_intro_mock": {
       "type": "pillar-intro",
       "settings": {
-        "fallback_image_filename": "pillar-intro.jpg"
+        "fallback_image_filename": "pillar-intro-melissa.jpg"
       }
     },
     "pillar_grid_mock": {
