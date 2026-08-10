@@ -12,6 +12,8 @@
     >
   {% endif %}
 
+  <div class="pillar-intro__scrim" aria-hidden="true"></div>
+
   <div class="pillar-intro__content">
     <p class="pillar-intro__eyebrow">The Design Agency Presents</p>
     <h1 class="pillar-intro__headline">Inspiration Delivered</h1>
@@ -40,9 +42,22 @@
     display: block;
   }
 
+  .pillar-intro__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.45) 22%,
+      rgba(0, 0, 0, 0.2) 42%,
+      rgba(0, 0, 0, 0) 62%
+    );
+  }
+
   .pillar-intro__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
