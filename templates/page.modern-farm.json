@@ -74,9 +74,19 @@
         "title": "Modern Farm",
         "fallback_image_filename": "pillar-modern-farm.jpg"
       }
+    },
+    "inspiration": {
+      "type": "pillar-inspiration",
+      "settings": {
+        "fallback_image_filename": "pillar-inspiration-modern-farm.jpg",
+        "image_position": "left",
+        "name": "Melissa Bilicki",
+        "quote": "<p>Our country has such a rich history of farming — the land, the labor, the quiet dignity of it. Modern Farm honors that history while bringing it forward: pieces that speak to our rural past, reimagined with a modern edge that brings warmth into the home and the family living in it.</p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "inspiration"
   ]
 }

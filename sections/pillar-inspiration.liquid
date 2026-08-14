@@ -1,0 +1,136 @@
+<div class="pillar-inspiration pillar-inspiration--image-{{ section.settings.image_position }}">
+  <div class="pillar-inspiration__image">
+    {% if section.settings.image %}
+      {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '400,600,900,1200,1600' }}
+    {% elsif section.settings.fallback_image_filename != blank %}
+      <img
+        src="{{ section.settings.fallback_image_filename | asset_url }}"
+        alt="{{ section.settings.name }}"
+        loading="lazy"
+        width="1200"
+        height="1200"
+      >
+    {% endif %}
+  </div>
+
+  <div class="pillar-inspiration__content">
+    <p class="pillar-inspiration__name">{{ section.settings.name }}</p>
+    <div class="pillar-inspiration__quote">{{ section.settings.quote }}</div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pillar-inspiration {
+    display: flex;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    background: #ffffff;
+    padding: 6rem var(--page-margin, 16px);
+    max-width: var(--page-content-width, 1400px);
+    margin: 0 auto;
+  }
+
+  .pillar-inspiration--image-right {
+    flex-direction: row-reverse;
+  }
+
+  @media screen and (max-width: 749px) {
+    .pillar-inspiration {
+      flex-direction: column;
+      padding: 3rem var(--page-margin, 16px);
+      gap: 2rem;
+    }
+
+    .pillar-inspiration--image-right {
+      flex-direction: column;
+    }
+  }
+
+  .pillar-inspiration__image {
+    flex: 0 0 46%;
+    max-width: 30rem;
+  }
+
+  .pillar-inspiration__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .pillar-inspiration__content {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  .pillar-inspiration__name {
+    flex: 0 0 auto;
+    margin: 0.35rem 0 0;
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+  }
+
+  .pillar-inspiration__quote {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    line-height: 1.55;
+    color: #000000;
+    max-width: 34rem;
+  }
+
+  .pillar-inspiration__quote p {
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pillar inspiration",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "fallback_image_filename",
+      "label": "Fallback theme asset filename"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Melissa Bilicki"
+    },
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Quote"
+    }
+  ],
+  "presets": [
+    { "name": "Pillar inspiration" }
+  ]
+}
+{% endschema %}
