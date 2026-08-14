@@ -22,6 +22,12 @@
   </div>
 
   {% if section.blocks.size > 0 %}
+    {% if section.settings.nav_heading != blank %}
+      <div class="pillar-header__nav-heading-wrap">
+        <h2 class="pillar-header__nav-heading">{{ section.settings.nav_heading }}</h2>
+        <div class="pillar-header__nav-rule"></div>
+      </div>
+    {% endif %}
     <nav class="pillar-header__rooms-nav" aria-label="Shop by room">
       {% for block in section.blocks %}
         <a href="{{ block.settings.link }}" class="pillar-header__room-link" {{ block.shopify_attributes }}>
@@ -94,13 +100,33 @@
     display: block;
   }
 
+  .pillar-header__nav-heading-wrap {
+    padding: 3rem var(--page-margin, 16px) 0;
+    max-width: var(--page-content-width, 1400px);
+    margin: 0 auto;
+  }
+
+  .pillar-header__nav-heading {
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: #000000;
+  }
+
+  .pillar-header__nav-rule {
+    border-top: 1px solid #000000;
+    margin-top: 1.5rem;
+  }
+
   .pillar-header__rooms-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 0.5rem 1.75rem;
-    padding: 2.5rem var(--page-margin, 16px) 0;
+    padding: 2rem var(--page-margin, 16px) 0;
   }
 
   .pillar-header__room-link {
@@ -146,6 +172,12 @@
       "id": "hide_title",
       "label": "Hide title overlay on image",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "nav_heading",
+      "label": "Room nav heading",
+      "info": "Shown above the room links, e.g. \"Explore Melissa's Curated Collection\""
     }
   ],
   "blocks": [

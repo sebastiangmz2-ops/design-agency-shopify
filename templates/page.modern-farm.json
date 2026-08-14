@@ -72,7 +72,8 @@
       ],
       "settings": {
         "title": "Modern Farm",
-        "fallback_image_filename": "pillar-modern-farm.jpg"
+        "fallback_image_filename": "pillar-modern-farm.jpg",
+        "nav_heading": "Explore Melissa's Curated Collection"
       }
     },
     "inspiration": {
