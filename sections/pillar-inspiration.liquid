@@ -14,8 +14,8 @@
   </div>
 
   <div class="pillar-inspiration__content">
-    <p class="pillar-inspiration__name">{{ section.settings.name }}</p>
     <div class="pillar-inspiration__quote">{{ section.settings.quote }}</div>
+    <p class="pillar-inspiration__name">{{ section.settings.name }}</p>
   </div>
 </div>
 
@@ -62,13 +62,13 @@
   .pillar-inspiration__content {
     flex: 1;
     display: flex;
-    align-items: flex-start;
-    gap: clamp(1rem, 3vw, 2.5rem);
+    flex-direction: column;
   }
 
   .pillar-inspiration__name {
-    flex: 0 0 auto;
-    margin: 0.35rem 0 0;
+    max-width: 34rem;
+    margin: 1.25rem 0 0;
+    text-align: right;
     font-family: var(--font-body--family);
     font-weight: 400;
     font-size: 0.7rem;
