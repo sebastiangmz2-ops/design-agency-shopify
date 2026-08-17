@@ -267,14 +267,6 @@
         "padding-block-end": 66
       }
     },
-    "banner": {
-      "type": "pillar-header",
-      "settings": {
-        "title": "Modern Farm",
-        "fallback_image_filename": "pillar-modern-farm.jpg",
-        "hide_title": true
-      }
-    },
     "subheading": {
       "type": "collection-room-subheading",
       "settings": {
@@ -344,7 +336,6 @@
     }
   },
   "order": [
-    "banner",
     "subheading",
     "main"
   ]
