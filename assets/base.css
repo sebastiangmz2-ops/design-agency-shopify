@@ -1621,6 +1621,17 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) .volume-pricing-note {
 
 .shopify-policy__container {
   padding-block: var(--padding-xl);
+  /* Shopify's platform stylesheet (policy-*.css) loads after ours and sets a
+     fixed 492px container with a 120px title — override both with !important
+     since we can't control that stylesheet's load order. */
+  max-width: 800px !important;
+  padding-inline: var(--page-margin, 16px) !important;
+  margin-inline: auto !important;
+}
+
+.shopify-policy__title h1 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem) !important;
+  font-weight: 400 !important;
 }
 
 /* Radio buttons and checkboxes - shared base styles */
