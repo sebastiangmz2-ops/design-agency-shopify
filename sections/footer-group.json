@@ -163,6 +163,10 @@
           },
           "blocks": {}
         },
+        "policy_list": {
+          "type": "footer-policy-list",
+          "settings": {}
+        },
         "social_links_BGVf9A": {
           "type": "social-links",
           "name": "t:names.social_media_links",
@@ -178,6 +182,7 @@
       },
       "block_order": [
         "copyright",
+        "policy_list",
         "social_links_BGVf9A"
       ],
       "settings": {
