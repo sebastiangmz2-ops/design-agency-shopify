@@ -147,7 +147,7 @@
         "section_width": "page-width",
         "gap": 0,
         "background_color": "#F8F4EC",
-        "padding-block-start": 64,
+        "padding-block-start": 32,
         "padding-block-end": 0
       }
     },
